@@ -1,0 +1,6 @@
+SELECT DISTINCT h.host,i.ip
+FROM hosts as h, interface as i, hosts_groups as hg, hstgrp 
+WHERE h.hostid = i.hostid AND h.hostid = hg.hostid AND hg.groupid = hstgrp.groupid AND h.status = 1
+
+
+Disable Host List

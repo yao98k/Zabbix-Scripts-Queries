@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo -u postgres -H  -- psql -d zabbix -c "SELECT DISTINCT  problem.eventid FROM problem, triggers,hosts WHERE problem.objectid = triggers.triggerid AND (problem.source = 0 OR problem.source = 3) AND problem.object = 0 AND problem.r_eventid IS NULL AND triggers.status = 0 AND triggers.value=1 ;" > /tmp/list.txt
+

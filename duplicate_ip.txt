@@ -1,0 +1,6 @@
+#!/bin/bash
+dbhost=10.224.120.91
+psql -U postgres -h $dbhost -d zabbix -c "SELECT COUNT(*) AS count FROM (  SELECT i.ip  FROM hosts h  INNER JOIN interface i ON h.hostid = i.hostid  GROUP BY i.ip  HAVING COUNT(i.ip) > 1) AS subquery;"
+
+
+Aynı IP adresinden 1'den fazla var ise.  Zabbix'te Item ve trigger oluşturuldu.
